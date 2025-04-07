@@ -46,6 +46,10 @@ type Update struct {
 	//
 	// optional
 	Message *Message `json:"message,omitempty"`
+	// BusinessMessage new incoming message of any kind — text, photo, sticker, etc.
+	//
+	// optional
+	BusinessMessage *Message `json:"business_message,omitempty"`
 	// EditedMessage new version of a message that is known to the bot and was
 	// edited
 	//

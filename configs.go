@@ -264,7 +264,8 @@ func (CloseConfig) params() (Params, error) {
 
 // BaseChat is base type for all chat config types.
 type BaseChat struct {
-	ChatID                   int64 // required
+	ChatID                   int64  // required
+	BusinessConnectionID     string `json:"business_connection_id,omitempty"`
 	ChannelUsername          string
 	ProtectContent           bool
 	ReplyToMessageID         int
@@ -339,6 +340,7 @@ func (config MessageConfig) params() (Params, error) {
 	params.AddNonEmpty("text", config.Text)
 	params.AddBool("disable_web_page_preview", config.DisableWebPagePreview)
 	params.AddNonEmpty("parse_mode", config.ParseMode)
+	params.AddNonEmpty("business_connection_id", config.BusinessConnectionID)
 	err = params.AddInterface("entities", config.Entities)
 
 	return params, err
@@ -419,6 +421,7 @@ func (config PhotoConfig) params() (Params, error) {
 
 	params.AddNonEmpty("caption", config.Caption)
 	params.AddNonEmpty("parse_mode", config.ParseMode)
+	params.AddNonEmpty("business_connection_id", config.BusinessConnectionID)
 	err = params.AddInterface("caption_entities", config.CaptionEntities)
 
 	return params, err

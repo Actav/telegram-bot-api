@@ -33,6 +33,21 @@ func NewDeleteMessage(chatID int64, messageID int) DeleteMessageConfig {
 	}
 }
 
+// NewBusinessMessage creates a new BusinessMessage.
+//
+// chatID is where to send it, text is the message text.
+func NewBusinessMessage(chatID int64, BusinessConnectionID, text string) MessageConfig {
+	return MessageConfig{
+		BaseChat: BaseChat{
+			ChatID:               chatID,
+			BusinessConnectionID: BusinessConnectionID,
+			ReplyToMessageID:     0,
+		},
+		Text:                  text,
+		DisableWebPagePreview: false,
+	}
+}
+
 // NewMessageToChannel creates a new Message that is sent to a channel
 // by username.
 //
@@ -82,6 +97,18 @@ func NewPhoto(chatID int64, file RequestFileData) PhotoConfig {
 		BaseFile: BaseFile{
 			BaseChat: BaseChat{ChatID: chatID},
 			File:     file,
+		},
+	}
+}
+
+func NewBusinessPhoto(chatID int64, BusinessConnectionID string, file RequestFileData) PhotoConfig {
+	return PhotoConfig{
+		BaseFile: BaseFile{
+			BaseChat: BaseChat{
+				ChatID:               chatID,
+				BusinessConnectionID: BusinessConnectionID,
+			},
+			File: file,
 		},
 	}
 }

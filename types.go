@@ -368,7 +368,8 @@ type Message struct {
 	// From is a sender, empty for messages sent to channels;
 	//
 	// optional
-	From *User `json:"from,omitempty"`
+	BusinessConnectionID string `json:"business_connection_id,omitempty"`
+	From                 *User  `json:"from,omitempty"`
 	// SenderChat is the sender of the message, sent on behalf of a chat. The
 	// channel itself for channel messages. The supergroup itself for messages
 	// from anonymous group administrators. The linked channel for messages
